@@ -1,0 +1,66 @@
+	B main
+
+op1	DEFB	"Operand 1:  \0"
+op2	DEFB	"Operand 2:  \0"
+roo	DEFB	"\nResult of Operation: \0"
+pso	DEFB	"Please select your operation (+, -, e): \0"
+new	DEFB	"\n"
+
+	ALIGN
+op1_value DEFW 0
+op2_value DEFW 0
+result DEFW 0
+
+main
+  ADR	R0, op1		; printf("Operand 1: ")
+  SVC 3
+  SVC	5		    ; input a digit to R0
+  MOV R1, R0
+
+  ADR	R0, op2		; printf("Operand 2: ")
+  SVC 3
+  SVC	5		    ; input a digit to R2
+  MOV R2, R0
+  
+  ADR R0, pso			;printf("Please your operation (+, -, e):  ")
+  SVC 3
+  SVC	1		; input a character to R0
+  SVC 0
+
+
+  CMP R0, #'+'
+  BEQ addition
+  
+  CMP R0, #'-'
+  BEQ subtraction
+  
+  CMP R0, #'e'
+  B end
+
+  
+addition
+  ADD R0, R1, R2				
+  STR R0, result		; stores the result into 'result'
+
+  B endprog
+
+subtraction
+  SUB R0, R1, R2
+  STR R0, result		; stores the result into 'result'
+  
+  B endprog
+  
+endprog
+  ADR R0, roo
+  SVC 3			; printf("Result of Operation: ")
+  LDR R0, result
+  SVC 4			; prints the value stored in 'result'
+  ADR	R0, new		; printf("\n")
+  SVC 3
+
+  
+  B main
+  
+end  
+  SVC 2		        ; stop the program
+
