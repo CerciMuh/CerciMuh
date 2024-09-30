@@ -3,7 +3,6 @@
 - 🌱 I’m currently learning C, Verilog, and AWS Cloud
 - 💞️ I’m looking to collaborate on Machine Learning/AI projects
 - 📫 How to reach me: ali.almuhtaseb@outlook.com +447767683465 (+966536609339 on whatsapp)
-- 😄 Pronouns: he/him
 - ⚡ Fun fact: I was a COD proffesional player in Saudi Arabia 
 
 <!---
